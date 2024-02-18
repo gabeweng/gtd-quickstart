@@ -12,3 +12,7 @@ from langchain.indexes import VectorstoreIndexCreator
 from langchain.llms import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
+
+def print_response(response: str):
+    print("\n".join(textwrap.wrap(response, width=100)))
+     
