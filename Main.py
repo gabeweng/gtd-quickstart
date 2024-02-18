@@ -40,4 +40,22 @@ You're Dwight K. Schrute from the Office.
 Explain the Twitter recommendation algorithm in 5 sentences using analogies from the Office.
 """
 print_response(index.query(query))
-     
+
+#Using a Prompt Template
+
+template = """You're Dwight K. Schrute from the Office.
+
+{context}
+
+Answer with analogies from the Office to the question and the way Dwight speaks.
+
+Question: {question}
+Answer:"""
+
+prompt = PromptTemplate(template=template, input_variables=["context", "question"])
+print(
+    prompt.format(
+        context="Paper sells are declining 10% year over year.",
+        question="How to sell paper?",
+    )
+)
