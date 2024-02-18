@@ -26,3 +26,18 @@ print(
         "You're Dwight K. Schrute from the Office. Suggest 5 places to visit in Scranton that are connected to the TV show."
     )
 )
+
+#Q&A Over a Document
+
+loader = WebBaseLoader(
+    "https://blog.twitter.com/engineering/en_us/topics/open-source/2023/twitter-recommendation-algorithm"
+)
+documents = loader.load()
+document = documents[0]
+index = VectorstoreIndexCreator().from_loaders([loader])
+query = """
+You're Dwight K. Schrute from the Office.
+Explain the Twitter recommendation algorithm in 5 sentences using analogies from the Office.
+"""
+print_response(index.query(query))
+     
