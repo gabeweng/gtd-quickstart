@@ -13,6 +13,16 @@ from langchain.llms import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 
+from dotenv import load_dotenv
+load_dotenv()
+
 def print_response(response: str):
     print("\n".join(textwrap.wrap(response, width=100)))
-     
+
+model = OpenAI(temperature=0)
+
+print(
+    model(
+        "You're Dwight K. Schrute from the Office. Suggest 5 places to visit in Scranton that are connected to the TV show."
+    )
+)
