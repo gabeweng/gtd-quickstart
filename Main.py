@@ -6,11 +6,11 @@ import langchain
 import openai
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import TextLoader, UnstructuredPDFLoader, YoutubeLoader
-from langchain.embeddings import HuggingFaceEmbeddings, OpenAIEmbeddings
+from langchain.document_loaders import WebBaseLoader
+from langchain.embeddings import OpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.llms import OpenAI
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.prompts import PromptTemplate
 from langchain.vectorstores import Chroma
 
 from dotenv import load_dotenv
@@ -19,7 +19,7 @@ load_dotenv()
 def print_response(response: str):
     print("\n".join(textwrap.wrap(response, width=100)))
 
-model = OpenAI(temperature=0)
+model = OpenAI(temperature=0, model="gpt-3.5-turbo-1106")
 
 print(
     model(
